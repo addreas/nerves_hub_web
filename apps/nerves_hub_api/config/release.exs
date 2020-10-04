@@ -39,6 +39,13 @@ config :nerves_hub_web_core, NervesHubWebCore.Workers.FirmwaresTransferS3Ingress
 
 config :ex_aws, region: System.fetch_env!("AWS_REGION")
 
+if System.get_env("S3_SCHEME") != nil do
+  config :ex_aws, :s3,
+    scheme: System.fetch_env!("S3_SCHEME") <> "://",
+    host: System.fetch_env!("S3_HOST"),
+    port: System.fetch_env!("S3_PORT")
+end
+
 config :nerves_hub_web_core, NervesHubWebCore.Mailer,
   adapter: Bamboo.SMTPAdapter,
   server: System.fetch_env!("SES_SERVER"),
