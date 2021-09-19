@@ -11,7 +11,7 @@ defmodule NervesHubWWW.MixProject do
       lockfile: "../../mix.lock",
       elixir: "~> 1.6",
       elixirc_paths: elixirc_paths(Mix.env()),
-      compilers: [:phoenix, :gettext] ++ Mix.compilers(),
+      compilers: [:gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps(),
@@ -53,26 +53,24 @@ defmodule NervesHubWWW.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.5"},
-      {:phoenix_active_link, "~> 0.3.1"},
+      {:phoenix, "~> 1.6-rc", override: true},
+      {:phoenix_active_link, git: "https://github.com/jshmrtn/phoenix-active-link.git", branch: "phoenix_html_v3"},
       {:phoenix_pubsub, "~> 2.0"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:phoenix_live_view, "~> 0.15"},
-      {:plug, "~> 1.7"},
-      {:plug_cowboy, "~> 2.1"},
-      {:phoenix_ecto, "~> 4.0"},
-      {:phoenix_html, "~> 2.14"},
+      {:phoenix_live_view, "~> 0.16"},
+      {:phoenix_ecto, "~> 4.4"},
+      {:phoenix_html, "~> 3.0"},
       {:phoenix_markdown, "~> 1.0"},
-      {:cowboy, "~> 2.0", override: true},
-      {:gettext, "~> 0.11"},
-      {:hackney, "~> 1.16"},
+      {:plug_cowboy, "~> 2.5"},
+      {:gettext, "~> 0.18"},
+      {:hackney, "~> 1.17"},
       {:rollbax, "~> 0.11.0"},
       {:floki, ">= 0.27.0", only: :test},
-      {:jason, "~> 1.2", override: true},
+      {:jason, "~> 1.2"},
+      {:ansi_to_html, git: "https://github.com/addreas/ansi_to_html.git"},
+      {:scrivener_html, git: "https://github.com/addreas/scrivener_html", branch: "phx-1.6"},
       {:nerves_hub_web_core, in_umbrella: true},
       {:nerves_hub_device, in_umbrella: true},
-      {:ansi_to_html, git: "https://github.com/jjcarstens/ansi_to_html"},
-      {:scrivener_html, git: "https://github.com/nerves-hub/scrivener_html", branch: "phx-1.5"}
     ]
   end
 

@@ -37,7 +37,7 @@
   </head>
 
   <body>
-    <%= if @view_module == NervesHubWWWWeb.HomeView do %>
+    <%= if Phoenix.Controller.view_module(@conn) == NervesHubWWWWeb.HomeView do %>
       <div class="home-wrapper">
         <main role="main" class="flex-column">
           <%= if get_flash(@conn, :info) do %>
