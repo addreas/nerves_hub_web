@@ -59,7 +59,7 @@ defmodule NervesHubWWW.MixProject do
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:phoenix_live_view, "~> 0.16"},
       {:phoenix_ecto, "~> 4.4"},
-      {:phoenix_html, "~> 3.0"},
+      {:phoenix_html, "~> 3.0.4"},
       {:phoenix_markdown, "~> 1.0"},
       {:plug_cowboy, "~> 2.5"},
       {:gettext, "~> 0.18"},

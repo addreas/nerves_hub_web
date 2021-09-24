@@ -5,7 +5,7 @@ logger_level = System.get_env("LOG_LEVEL", "warn") |> String.to_atom()
 config :logger, level: logger_level
 
 host = System.fetch_env!("HOST")
-port = 80
+port = System.get_env("PORT", "80") |> String.to_integer()
 
 sync_nodes_optional =
   case System.fetch_env("SYNC_NODES_OPTIONAL") do

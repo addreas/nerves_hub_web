@@ -69,7 +69,7 @@ cacerts =
 config :nerves_hub_api, NervesHubAPIWeb.Endpoint,
   url: [host: host],
   https: [
-    port: 443,
+    port: System.get_env("PORT", "443") |> String.to_integer(),
     otp_app: :nerves_hub_api,
     # Enable client SSL
     verify: :verify_peer,

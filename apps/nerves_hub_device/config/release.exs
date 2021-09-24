@@ -60,7 +60,7 @@ host = System.fetch_env!("HOST")
 config :nerves_hub_device, NervesHubDeviceWeb.Endpoint,
   url: [host: host],
   https: [
-    port: 443,
+    port: System.get_env("PORT", "443") |> String.to_integer(),
     otp_app: :nerves_hub_device,
     # Enable client SSL
     verify: :verify_peer,

@@ -26,7 +26,7 @@ config :nerves_hub_web_core,
   enable_workers: true,
   firmware_upload: NervesHubWebCore.Firmwares.Upload.S3,
   host: "www.nerves-hub.org",
-  port: 80
+  port: System.get_env("PORT", "80") |> String.to_integer()
 
 config :nerves_hub_web_core, NervesHubWebCore.Mailer,
   adapter: Bamboo.SMTPAdapter,
