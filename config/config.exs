@@ -72,7 +72,20 @@ config :nerves_hub_web_core, Oban,
 ##
 # NervesHubWWW
 #
-config :nerves_hub_www,
+config :esbuild, version: "0.12.26",
+  default: [
+    args: ~w(js/app.js --bundle --target=es2016 --outdir=../priv/static/assets),
+    cd: Path.expand("../apps/nerves_hub_www/assets", __DIR__),
+    env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
+  ]
+config :dart_sass,
+  version: "1.39.0",
+  default: [
+    args: ~w(css/app.scss --load-path node_modules ../priv/static/assets/app.css),
+    cd: Path.expand("../apps/nerves_hub_www/assets", __DIR__)
+  ]
+
+  config :nerves_hub_www,
   ecto_repos: [NervesHubWebCore.Repo],
   # Options are :ssl or :header
   websocket_auth_methods: [:ssl]

@@ -68,7 +68,11 @@ defmodule NervesHubUmbrella.MixProject do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
-      "assets.setup": ["assets.install", "assets.build"],
+      "assets.deploy": [
+        "esbuild default --minify",
+        "sass default --no-source-map --style=compressed",
+        "phx.digest"
+      ],
       "ecto.setup": [
         "ecto.create",
         "ecto.migrate",

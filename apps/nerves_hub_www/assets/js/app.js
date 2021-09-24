@@ -1,10 +1,8 @@
-import '../css/app.scss'
-
 import 'phoenix_html'
 import 'bootstrap'
 import $ from 'jquery'
 import { Socket } from 'phoenix'
-import LiveSocket from 'phoenix_live_view'
+import { LiveSocket } from 'phoenix_live_view'
 import Josh from 'joshjs'
 
 let dates = require('./dates')

@@ -87,7 +87,13 @@ config :nerves_hub_www, NervesHubWWWWeb.Endpoint,
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
-  watchers: [npm: ["run", "watch", cd: Path.expand("../apps/nerves_hub_www/assets", __DIR__)]]
+  watchers: [
+    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
+    sass: {
+      DartSass,
+      :install_and_run,
+      [:default, ~w(--embed-source-map --source-map-urls=absolute --watch)]
+    }]
 
 config :nerves_hub_www, NervesHubWWWWeb.Endpoint,
   url: [scheme: web_scheme, host: web_host, port: web_port],
