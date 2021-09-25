@@ -71,6 +71,7 @@ defmodule NervesHubUmbrella.MixProject do
       "assets.deploy": [
         "esbuild default --minify",
         "sass default --no-source-map --style=compressed",
+        "assets.copy_static",
         "phx.digest"
       ],
       "ecto.setup": [

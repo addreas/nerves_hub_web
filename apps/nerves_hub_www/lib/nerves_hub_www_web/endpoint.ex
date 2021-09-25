@@ -21,7 +21,7 @@ defmodule NervesHubWWWWeb.Endpoint do
     Plug.Static,
     at: "/",
     from: :nerves_hub_www,
-    gzip: false,
+    gzip: true,
     only: ~w(css fonts images js favicon.ico robots.txt)
   )
 
