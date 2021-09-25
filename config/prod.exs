@@ -5,7 +5,6 @@ config :logger, level: :warn
 
 config :rollbax,
   environment: to_string(Mix.env()),
-  enabled: true,
   enable_crash_reports: true
 
 ##
