@@ -45,7 +45,7 @@ defmodule NervesHubWebCore.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:phoenix, "~> 1.6-rc"},
+      {:phoenix, "~> 1.6"},
       {:phoenix_html, "~> 3.0.4"},
       {:phoenix_ecto, "~> 4.4"},
       {:ecto_enum, github: "mobileoverlord/ecto_enum"},

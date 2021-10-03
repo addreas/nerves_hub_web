@@ -53,7 +53,7 @@ defmodule NervesHubWWW.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.6-rc", override: true},
+      {:phoenix, "~> 1.6"},
       {:phoenix_active_link, git: "https://github.com/jshmrtn/phoenix-active-link.git", branch: "phoenix_html_v3"},
       {:phoenix_pubsub, "~> 2.0"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},

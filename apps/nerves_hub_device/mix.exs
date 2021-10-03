@@ -48,7 +48,7 @@ defmodule NervesHubDevice.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.6-rc", override: true},
+      {:phoenix, "~> 1.6"},
       {:phoenix_pubsub, "~> 2.0"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:gettext, "~> 0.18"},
