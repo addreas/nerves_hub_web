@@ -63,6 +63,7 @@ defmodule NervesHubWebCore.MixProject do
       {:bamboo_phoenix, "~> 1.0"},
       {:bamboo_smtp, "~> 4.1"},
       {:jason, "~> 1.2"},
+      {:libcluster, "~> 3.3"},
       {:mox, "~> 1.0", only: [:test, :dev]},
       {:nimble_csv, "~> 1.1"}
     ]

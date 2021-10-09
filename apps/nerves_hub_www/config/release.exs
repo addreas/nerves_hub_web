@@ -7,23 +7,25 @@ config :logger, level: logger_level
 host = System.fetch_env!("HOST")
 port = System.get_env("PORT", "80") |> String.to_integer()
 
-sync_nodes_optional =
-  case System.fetch_env("SYNC_NODES_OPTIONAL") do
-    {:ok, sync_nodes_optional} ->
-      sync_nodes_optional
-      |> String.trim()
-      |> String.split(" ")
-      |> Enum.map(&String.to_atom/1)
-
-    :error ->
-      []
-  end
-
-config :kernel,
-  sync_nodes_optional: sync_nodes_optional,
-  sync_nodes_timeout: 5000,
-  inet_dist_listen_min: 9100,
-  inet_dist_listen_max: 9155
+config :nerves_hub_web_core, NervesHubWeb.ClusterSupervisor,
+  api_servers: [
+    strategy: Cluster.Strategy.Kubernetes,
+    config: [
+      kubernetes_ip_lookup_mode: :pods,
+      kubernetes_node_basename: "nerves_hub_api",
+      kubernetes_selector: "app=nerves-hub-api",
+      kubernetes_namespace: "nh",
+      polling_interval: 10_000]
+  ],
+  device_servers: [
+    strategy: Cluster.Strategy.Kubernetes,
+    config: [
+      kubernetes_ip_lookup_mode: :pods,
+      kubernetes_node_basename: "nerves_hub_device",
+      kubernetes_selector: "app=nerves-hub-device",
+      kubernetes_namespace: "nh",
+      polling_interval: 10_000]
+  ]
 
 if rollbar_access_token = System.get_env("ROLLBAR_ACCESS_TOKEN") do
   config :rollbax, access_token: rollbar_access_token

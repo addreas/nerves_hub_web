@@ -7,9 +7,16 @@ defmodule NervesHubWebCore.Application do
   # for more information on OTP Applications
   def start(_type, _args) do
     pubsub_config = Application.get_env(:nerves_hub_web_core, NervesHubWeb.PubSub)
+    topologies = Application.get_env(:nerves_hub_web_core, NervesHubWeb.ClusterSupervisor)
+
+    clustersupervisor = if topologies != nil do
+      [{Cluster.Supervisor, [topologies, [name: NervesHubWebCore.ClusterSupervisor]]}]
+    else
+      []
+    end
 
     # Define workers and child supervisors to be supervised
-    children = [
+    children = clustersupervisor ++ [
       # Start the Ecto repository
       NervesHubWebCore.Repo,
       {Phoenix.PubSub, pubsub_config},
